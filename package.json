@@ -1,5 +1,5 @@
 {
-  "name": "generate-colors",
+  "name": "color-picker",
   "private": false,
   "scripts": {
     "dev": "nuxt dev",
