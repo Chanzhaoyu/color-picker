@@ -90,7 +90,7 @@
 import { generate, presetPalettes } from "@ant-design/colors";
 import Message from "vue-m-message";
 import "vue-m-message/dist/style.css";
-import GitHub from "@/components/GitHub.vue";
+import GitHub from "./components/github.vue";
 
 // @ts-ignore
 import ColorInput from "vue-color-input";
