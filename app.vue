@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 min-h-screen bg-[#01031d] text-white">
     <div class="max-w-screen-xl m-auto">
-      <main class="space-y-4">
+      <main class="space-y-8">
         <h1 class="my-8 text-3xl font-bold text-center">Color Pick</h1>
         <div class="space-y-2">
           <h2 class="text-xl">默认颜色</h2>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="space-y-2">
-          <h2 class="text-xl">选择颜色</h2>
+          <h2 class="text-xl">主色</h2>
           <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
               <input v-model="color" class="input h-10 text-slate-700 w-44" />
@@ -57,30 +57,77 @@
             </div>
           </div>
         </div>
+        <div class="space-y-2">
+          <h2 class="text-xl">推荐</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div>
+              <div class="mockup-code">
+                <div class="flex justify-between items-center px-6">
+                  <span class="font-bold">Light</span>
+                  <button class="btn btn-outline btn-info btn-xs" @click="onCopy(lightColors)">复制</button>
+                </div>
+                <pre><code>{{ lightColors }}</code></pre>
+              </div>
+            </div>
+            <div>
+              <div class="mockup-code">
+                <div class="flex justify-between items-center px-6">
+                  <span class="font-bold">Dark</span>
+                  <button class="btn btn-outline btn-info btn-xs" @click="onCopy(darkColors)">复制</button>
+                </div>
+                <pre><code>{{ darkColors }}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
+    <GitHub link="https://github.com/Chanzhaoyu/color-picker" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { generate } from "@ant-design/colors";
-import Message from 'vue-m-message'
-import 'vue-m-message/dist/style.css'
+import { generate, presetPalettes } from "@ant-design/colors";
+import Message from "vue-m-message";
+import "vue-m-message/dist/style.css";
+import GitHub from "@/components/GitHub.vue";
+
 // @ts-ignore
 import ColorInput from "vue-color-input";
 
 const defaultColors = ["#4aa473", "#3f8be7", "#6e39d4", "#3564ca", "#f1ad4a", "#eb463d"];
 
-const color = ref<string>("#1890ff");
+const color = ref<string>("#4aa473");
 const colorsNormal = ref<string[]>([]);
 const colorsDark = ref<string[]>([]);
+
+const lightColors = ref<string>("");
+const darkColors = ref<string>("");
 
 function generateColor(color: string) {
   try {
     const c = generate(color);
-    const d = generate(color, { theme: "dark" });
     colorsNormal.value = c;
+    const d = generate(color, { theme: "dark", backgroundColor: "#141414" });
     colorsDark.value = d;
+    lightColors.value = `
+      {
+        "primaryColor": ${color},
+        "primaryColorHover": ${c[5]},
+        "primaryColorPressed": ${c[7]},
+        "primaryColorSuppl": ${c[5]},
+        "chatBgColor": ${c[2]}
+      }
+    `;
+    darkColors.value = `
+      {
+        "primaryColor": ${color},
+        "primaryColorHover": ${d[5]},
+        "primaryColorPressed": ${d[7]},
+        "primaryColorSuppl": ${d[5]},
+        "chatBgColor": ${d[2]}
+      }
+    `;
   } catch (error) {
     // ignore
   }
