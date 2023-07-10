@@ -4,7 +4,7 @@
       <main class="space-y-8">
         <h1 class="my-8 text-3xl font-bold text-center">Color Pick</h1>
         <div class="space-y-2">
-          <h2 class="text-xl">默认颜色</h2>
+          <h2 class="text-xl">推荐颜色</h2>
           <div class="space-x-2">
             <button
               class="w-6 h-6 rounded-full hover:scale-110 transition"
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="space-y-2">
-          <h2 class="text-xl">主色</h2>
+          <h2 class="text-xl">自定颜色</h2>
           <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
               <input v-model="color" class="input h-10 text-slate-700 w-44" />
@@ -95,9 +95,15 @@ import GitHub from "@/components/GitHub.vue";
 // @ts-ignore
 import ColorInput from "vue-color-input";
 
-const defaultColors = ["#4aa473", "#3f8be7", "#6e39d4", "#3564ca", "#f1ad4a", "#eb463d"];
+const defaultColors = computed(() => {
+  const colors: string[] = [];
+  for (const key in presetPalettes) {
+    colors.push(presetPalettes[key][5]);
+  }
+  return colors;
+});
 
-const color = ref<string>("#4aa473");
+const color = ref<string>(presetPalettes.blue[5]);
 const colorsNormal = ref<string[]>([]);
 const colorsDark = ref<string[]>([]);
 

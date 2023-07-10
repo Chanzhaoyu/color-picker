@@ -1,5 +1,7 @@
 # color-picker
 
+![Cover](./docs/cover.png)
+
 ## 部署
 
 **Vercel**
