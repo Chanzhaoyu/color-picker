@@ -1,0 +1,23 @@
+{
+  "name": "generate-colors",
+  "private": false,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@ant-design/colors": "^7.0.0",
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/node": "^18",
+    "daisyui": "^3.1.10",
+    "nuxt": "^3.6.2"
+  },
+  "dependencies": {
+    "vue-color-input": "^1.0.8",
+    "vue-m-message": "^4.0.2"
+  }
+}
