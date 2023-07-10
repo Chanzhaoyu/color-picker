@@ -108,24 +108,22 @@ function generateColor(color: string) {
   try {
     const c = generate(color);
     colorsNormal.value = c;
-    const d = generate(color, { theme: "dark", backgroundColor: "#141414" });
-    colorsDark.value = d;
     lightColors.value = `
-      {
+      "light": {
         "primaryColor": "${color}",
-        "primaryColorHover": "${c[5]}",
-        "primaryColorPressed": "${c[7]}",
-        "primaryColorSuppl": "${c[5]}",
-        "chatBgColor": "${c[2]}"
+        "primaryColorHover": "${c[4]}",
+        "primaryColorPressed": "${c[6]}",
+        "primaryColorSuppl": "${c[4]}",
+        "chatBgColor": "${c[3]}"
       }
     `;
     darkColors.value = `
-      {
-        "primaryColor": "${color}",
-        "primaryColorHover": "${d[5]}",
-        "primaryColorPressed": "${d[7]}",
-        "primaryColorSuppl": "${d[5]}",
-        "chatBgColor": "${d[2]}"
+      "dark": {
+        "primaryColor": "${c[4]}",
+        "primaryColorHover": "${c[3]}",
+        "primaryColorPressed": "${c[4]}",
+        "primaryColorSuppl": "${c[3]}",
+        "chatBgColor": "${c[2]}"
       }
     `;
   } catch (error) {
