@@ -112,20 +112,20 @@ function generateColor(color: string) {
     colorsDark.value = d;
     lightColors.value = `
       {
-        "primaryColor": ${color},
-        "primaryColorHover": ${c[5]},
-        "primaryColorPressed": ${c[7]},
-        "primaryColorSuppl": ${c[5]},
-        "chatBgColor": ${c[2]}
+        "primaryColor": "${color}",
+        "primaryColorHover": "${c[5]}",
+        "primaryColorPressed": "${c[7]}",
+        "primaryColorSuppl": "${c[5]}",
+        "chatBgColor": "${c[2]}"
       }
     `;
     darkColors.value = `
       {
-        "primaryColor": ${color},
-        "primaryColorHover": ${d[5]},
-        "primaryColorPressed": ${d[7]},
-        "primaryColorSuppl": ${d[5]},
-        "chatBgColor": ${d[2]}
+        "primaryColor": "${color}",
+        "primaryColorHover": "${d[5]}",
+        "primaryColorPressed": "${d[7]}",
+        "primaryColorSuppl": "${d[5]}",
+        "chatBgColor": "${d[2]}"
       }
     `;
   } catch (error) {
