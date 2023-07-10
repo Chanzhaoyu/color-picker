@@ -132,11 +132,11 @@ function generateColor(color: string) {
     `;
     darkColors.value = `
       "dark": {
-        "primaryColor": "${c[4]}",
-        "primaryColorHover": "${c[3]}",
+        "primaryColor": "${c[3]}",
+        "primaryColorHover": "${c[2]}",
         "primaryColorPressed": "${c[4]}",
-        "primaryColorSuppl": "${c[3]}",
-        "chatBgColor": "${c[2]}"
+        "primaryColorSuppl": "${c[2]}",
+        "chatBgColor": "${c[1]}"
       }
     `;
   } catch (error) {
